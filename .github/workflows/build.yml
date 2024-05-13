@@ -22,14 +22,13 @@ jobs:
       - name: Install poetry
         run: |
           python -m ensurepip
-          python pip install pip
-          python pip install poetry
+          python -m pip install pip
+          python -m pip install poetry
 
       - name: View poetry --help
         run: poetry --help
 
       - name: Install dependencies
-        shell: bash
         run: poetry install
 
       - name: Test
