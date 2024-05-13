@@ -22,8 +22,8 @@ jobs:
       - name: Install poetry
         run: |
           python -m ensurepip
-          python -m pip install pip
-          python -m pip install poetry
+          python pip install pip
+          python pip install poetry
 
       - name: View poetry --help
         run: poetry --help
