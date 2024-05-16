@@ -27,7 +27,6 @@ ENV PYTHONUNBUFFERED=1 \
     PYSETUP_PATH="/opt/pysetup" \
     VENV_PATH="/opt/pysetup/.venv"
 
-
 # prepend poetry and venv to path
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
@@ -48,17 +47,19 @@ RUN apt-get update \
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
+
 COPY poetry.lock pyproject.toml ./
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install --no-dev
 
 # quicker install as runtime deps are already installed
-RUN poetry install
 
 WORKDIR /app
 
 COPY . /app/
+
+RUN poetry install
 
 EXPOSE 8000
 

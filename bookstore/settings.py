@@ -26,8 +26,7 @@ SECRET_KEY = "django-insecure-es%$+dres^h3*^e_28%c3)j_k!co73n!6!^i^cb076ci*-+%u#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',  '[::1]']
 
 # Application definition
 
@@ -83,7 +82,7 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite"),
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
         "NAME": os.environ.get("SQL_DATABASE", BASE_DIR / "db.sqlite3"),
         "USER": os.environ.get("SQL_USER", "user"),
         "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
@@ -147,6 +146,3 @@ REST_FRAMEWORK = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-DEBUG = int(os.environ.get("DEBUG", default=0))
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
