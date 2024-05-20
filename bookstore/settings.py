@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-es%$+dres^h3*^e_28%c3)j_k!co73n!6!^i^cb076ci*-+%u#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1',  '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bookstore-production-22a7.up.railway.app']
 
 # Application definition
 
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -127,7 +128,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenose.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
