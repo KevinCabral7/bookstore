@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn bookstore.wsg
+web: python manage.py migrate && gunicorn bookstore.wsgi
